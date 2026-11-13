@@ -1,27 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import { ArrowRight, MessageCircle, Sparkles } from "lucide-react";
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { ArrowRight, MessageCircle } from "lucide-react";
 import { ConnectorLine } from "./ConnectorLine";
 
-const PLATFORMS = [
-  { name: "Instagram & Reels" },
-  { name: "TikTok & Konten Video" },
-  { name: "Google Maps & Pencarian" },
-  { name: "Iklan Meta & TikTok Ads" },
-];
-
 export function HeroSection() {
-  const [platformIdx, setPlatformIdx] = useState(0);
   const [mousePos, setMousePos] = useState({ x: 50, y: 30 });
-
-  useEffect(() => {
-    const platformTimer = setInterval(() => {
-      setPlatformIdx((prev) => (prev + 1) % PLATFORMS.length);
-    }, 2600);
-    return () => clearInterval(platformTimer);
-  }, []);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -29,8 +14,6 @@ export function HeroSection() {
     const y = ((e.clientY - rect.top) / rect.height) * 100;
     setMousePos({ x, y });
   };
-
-  const activePlatform = PLATFORMS[platformIdx];
 
   return (
     <section className="relative pt-20 pb-4 sm:pt-24 sm:pb-6 px-3 sm:px-6 bg-[#060505]">
@@ -50,39 +33,12 @@ export function HeroSection() {
 
         {/* Centered Editorial Copywriting */}
         <div className="relative z-10 mx-auto max-w-4xl px-5 sm:px-8 text-center">
-          {/* Interactive Platform Capture Ticker */}
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.03] px-4 py-1.5 backdrop-blur-md"
-          >
-            <Sparkles className="h-3.5 w-3.5 text-[#E2B896]" />
-            <span className="text-[11px] font-medium text-[#A99E94]">
-              Menangkap Trafik:
-            </span>
-            <div className="relative h-4 w-40 sm:w-48 overflow-hidden text-left">
-              <AnimatePresence mode="wait">
-                <motion.span
-                  key={activePlatform.name}
-                  initial={{ y: 12, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  exit={{ y: -12, opacity: 0 }}
-                  transition={{ duration: 0.35, ease: "easeOut" }}
-                  className="absolute inset-0 text-[11px] font-bold tracking-wide text-[#E2B896]"
-                >
-                  {activePlatform.name}
-                </motion.span>
-              </AnimatePresence>
-            </div>
-          </motion.div>
-
           {/* Main Display Headline with Glowing Champagne Emphasis */}
           <motion.h1
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.08 }}
-            className="mt-7 text-3xl sm:text-5xl lg:text-[58px] font-semibold tracking-[-0.03em] text-[#F5F2EE] leading-[1.12]"
+            className="text-3xl sm:text-5xl lg:text-[58px] font-semibold tracking-[-0.03em] text-[#F5F2EE] leading-[1.12]"
           >
             Membangun{" "}
             <span className="font-serif italic font-semibold text-[#FFF7EE] text-glow-champagne">

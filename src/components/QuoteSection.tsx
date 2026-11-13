@@ -20,10 +20,7 @@ export function QuoteSection() {
           </span>
 
           <blockquote className="mt-6 font-serif italic text-2xl sm:text-4xl font-semibold text-[#F5F2EE] leading-snug">
-            &ldquo;Keahlian medis Anda menyelamatkan kulit dan kepercayaan diri
-            pasien. Jangan biarkan sistem reservasi yang lambat dan katalog PDF
-            yang membingungkan membuat pasien terbaik Anda berpindah ke klinik
-            sebelah.&rdquo;
+            &ldquo;By far the best investment you can make is in yourself.&rdquo;
           </blockquote>
 
           <div className="mt-8 flex flex-col items-center">
